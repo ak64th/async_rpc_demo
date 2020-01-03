@@ -6,6 +6,8 @@ python -m async_rpc_demo_rq.bootstrap
 # python -m async_rpc_demo_aps.bootstrap
 ```
 
+**Note**: For production environment, you should launch the worker as a separate process.
+
 Add new job
 
 ```http
@@ -73,6 +75,27 @@ Transfer-Encoding: chunked
         "job_id": "32031b6b10e24f9dba8bb4ec4032526a",
         "result": null,
         "status": "queued"
+    },
+    "error": 0,
+    "message": "Succeed"
+}
+```
+
+```http
+HTTP/1.1 200 OK
+Connection: close
+Content-Type: application/json
+Date: Fri, 03 Jan 2020 07:25:02 GMT
+Server: waitress
+Transfer-Encoding: chunked
+
+{
+    "data": {
+        "job_id": "32031b6b10e24f9dba8bb4ec4032526a",
+        "result": {
+            "file": "path/of/result.npy"
+        },
+        "status": "finished"
     },
     "error": 0,
     "message": "Succeed"
